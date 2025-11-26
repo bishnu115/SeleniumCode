@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-02-09T15:55:23 IST" name="Default suite" finished-at="2024-02-09T15:55:43 IST" duration-ms="20909">
+    <groups>
+    </groups>
+    <test started-at="2024-02-09T15:55:23 IST" name="Default test" finished-at="2024-02-09T15:55:43 IST" duration-ms="20909">
+      <class name="varthana_Test.mainTest">
+        <test-method signature="m1()[pri:0, instance:varthana_Test.mainTest@5149d738]" started-at="2024-02-09T15:55:23 IST" name="m1" finished-at="2024-02-09T15:55:43 IST" duration-ms="20766" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- m1 -->
+      </class> <!-- varthana_Test.mainTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
