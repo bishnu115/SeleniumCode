@@ -12,32 +12,35 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class switchwindow {
 
-	public static void main(String[] args) {
-		WebDriver driver=new FirefoxDriver();
-		
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.get("https://demo.actitime.com/login.do");
-		driver.findElement(By.xpath("//a[text()='actiTIME Inc.']")).click();
-		
-//		Set<String> handle = driver.getWindowHandles();
-//		Iterator it = handle.iterator();
-//		String parentid = (String)it.next();
-//		String childid = (String)it.next();
-//		driver.switchTo().window(childid);
+    public static void main(String[] args) throws InterruptedException {
+
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        driver.get("https://the-internet.herokuapp.com");
+        driver.findElement(By.xpath("//a[text()='Multiple Windows']")).click();
+        Thread.sleep(5000);
+
+        // Click on link to open new window
+        driver.findElement(By.linkText("Click Here")).click();
+
+        // Get all window handles
+        Set<String> windows = driver.getWindowHandles();
 
         String parentWindow = driver.getWindowHandle();
-        // Get all window handles
-        Set<String> allWindows = driver.getWindowHandles();
+
         // Switch to child window
-        for (String window : allWindows) {
+        for (String window : windows) {
             if (!window.equals(parentWindow)) {
                 driver.switchTo().window(window);
-                System.out.println("Switched to Child Window: " + driver.getTitle());  } }
+                System.out.println("Child Window Title: " + driver.getTitle());
+            }
+        }
+Thread.sleep(5000);
         // Switch back to parent window
         driver.switchTo().window(parentWindow);
-        driver.findElement(By.xpath("//a[text()='Log in']")).click();
+        System.out.println("Parent Window Title: " + driver.getTitle());
 
-	}
-
+        driver.quit();
+    }
 }

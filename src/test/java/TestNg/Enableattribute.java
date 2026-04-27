@@ -23,5 +23,9 @@ public class Enableattribute
 		System.out.println("s");
 	}
 
-
+    @Test(enabled = false)
+    public void m2()
+    {
+        System.out.println("hii");
+    }
 }

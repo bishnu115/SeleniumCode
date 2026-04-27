@@ -1,14 +1,11 @@
 package TestNg;
 
 import org.testng.annotations.Test;
-//@Test (groups="log-in") write this before class then select group as log in this class will execute
-//r8 click---runas---run configuration--select group
+
 
 public class groupexecuation
 {
-	//it will execute group wise
-	//run as configuration then browse select group only that group execute
-	
+
 	@Test(groups="intigration")
 	public void a()
 	{

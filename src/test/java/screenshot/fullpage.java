@@ -13,30 +13,26 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class fullpage {
 
-	public static void main(String[] args) throws IOException {
-		WebDriver driver=new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.get("https://www.myntra.com/");
-     String er=   driver.getTitle();
-     if(er.equals("dsfsd")){
-         System.out.println("Ok");
-        }else {
-         //special interface takescreenshot
-         //type cast driver instance to takescreenshot instance
-         TakesScreenshot ts = (TakesScreenshot) driver;
-         //we called getsreenshot as method by passing output.file
-         //which is capture screenshot and store into src
-         File src = ts.getScreenshotAs(OutputType.FILE);
-         //above file we can't directly see so we specify location
-         File trg = new File(".\\screenshot\\hom.png");
-         //copy source file to terget for that we call fileutils.copyfile
-         FileUtils.copyFile(src, trg);
+    public static void main(String[] args) throws IOException {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.get("https://www.myntra.com/");
+        String er = driver.getTitle();
+        if (er.equals("dsfsd")) {
+            System.out.println("Ok");
+        } else {
+
+            TakesScreenshot ts = (TakesScreenshot) driver;
+
+            File src = ts.getScreenshotAs(OutputType.FILE);
+            File trg = new File(".\\screenshot\\houm.png");
+            FileUtils.copyFile(src, trg);
+            driver.close();
+
+        }
 
 
-     }
-		
-		
-	}
+    }
 
 }
