@@ -1,56 +1,48 @@
 import org.apache.xmlbeans.impl.xb.xsdschema.Public;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
 
 
 public class demo {
+    public static void main(String[] args) throws IOException {
 
-    static WebDriver driver;
 
-    public static void getTitle() {
-        System.out.println("title is :" + driver.getTitle());
-    }
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("http://www.google.com");
+     List<WebElement>AllLinks=driver.findElements(By.tagName("a"));
 
-    public static void getURL() {
-        System.out.println("url is: " + driver.getCurrentUrl());
-    }
-
-    public static void maximise() {
-        String env = "local";
-        if (env.equalsIgnoreCase("local")) {
-            driver.manage().window().maximize();
-            System.out.println("window maximise as it is a local env");
-        } else {
-            driver.manage().window().setSize(new Dimension(1920, 1080));
-            System.out.println("window maximise as it is a ci/cd env");
-
+        System.out.println(AllLinks.size());
+        for (WebElement link:AllLinks){
+           String url= link.getAttribute("href");
+           URL r=new URL(url);
+         HttpURLConnection c= (HttpURLConnection)r.openConnection();
+         c.setRequestMethod("HEAD");
+         c.connect();
+         int code=c.getResponseCode();
+            if(code>400){
+                System.out.println(url+" invalife");
+            }else {
+                System.out.println(url+"valide");
+            }
         }
-    }
 
-    public static void deletecookies() {
-        driver.manage().deleteAllCookies();
 
-    }
-    public static void pagesource() {
-        System.out.println("page source is"+driver.getPageSource());
-
-    }
-
-    public static void main(String[] args) {
-        driver = new ChromeDriver();
-        maximise();
-        deletecookies();
-        driver.get("https://the-internet.herokuapp.com");
-        getTitle();
-        getURL();
-      //  pagesource();
-
-        //   driver.close();
-
-    }
 
 
 }
+    }
+
+
+
 
 

@@ -13,13 +13,13 @@ public class invocationcount {
 	@Test(priority = 2,invocationCount = 4)
 	public void b()
 	{
-		System.out.println("def");
+		System.out.println("4");
 	}
 
 	@Test(priority = 1,invocationCount = 1)
 	public void c()
 	{
-		System.out.println("ghi");
+		System.out.println("1");
 	}
 }
 

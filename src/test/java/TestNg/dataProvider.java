@@ -1,51 +1,37 @@
-package TestNg;
-
-import java.time.Duration;
+ package TestNg;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class dataProvider {
-    @Test(dataProvider = "logintdata")
-    public void login(String username, String passwoard) throws InterruptedException {
-        WebDriver driver = new FirefoxDriver();
+
+    @Test(dataProvider = "aaa")
+    public void m1(String name, String age) throws InterruptedException {
+
+        WebDriver driver = new ChromeDriver();
+
         driver.manage().window().maximize();
-        driver.get("https://www.facebook.com/www.facebook.com");
-        driver.findElement(By.name("email")).sendKeys(username);
-        driver.findElement(By.name("pass")).sendKeys(passwoard);
-        driver.findElement(By.name("login")).click();
-        Thread.sleep(5000);
+        driver.get("https://www.google.com");
+        WebElement el=   driver.findElement(By.name("q"));
+     el.sendKeys(name + " " + age);
+        el.sendKeys(Keys.ENTER);
+Thread.sleep(4000);
         driver.quit();
     }
 
-    @DataProvider(name = "logintdata")
-    public Object[][] logindataa() {
-        Object[][] data = new Object[2][2];
-        data[0][0] = "admin";
-        data[0][1] = "ad";
+    @DataProvider(name = "aaa")
+    public Object[][] seaechdata() {
 
-        data[1][0] = "admin";
-        data[1][1] = "adr";
-        return data;
+        return new Object[][] {
+                {"srk", "age"},
+                {"salman", "age"},
+                {"kajol", "age"}
+        };
     }
 }
-// new one
-//    @DataProvider(name = "loginData")
-//    public Object[][] getData() {
-//        return new Object[][] {
-//                {"user1", "pass1"},
-//                {"user2", "pass2"},
-//                {"user3", "pass3"}
-//        };
-//    }
-//
-//    @Test(dataProvider = "loginData")
-//    public void loginTest(String username, String password) {
-//        System.out.println("Logging in with: " + username + " / " + password);
-//
-//
-//    }
-//}
+

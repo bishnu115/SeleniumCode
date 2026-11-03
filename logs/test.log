@@ -1,3 +1,6 @@
 2026-04-12 22:02:23 INFO  log4j.logs - Test started
 2026-04-12 22:02:23 WARN  log4j.logs - This is a warning
 2026-04-12 22:02:23 ERROR log4j.logs - This is an error
+2026-10-08 21:20:46 INFO  log4j.logs - Test started
+2026-10-08 21:20:46 WARN  log4j.logs - This is a warning
+2026-10-08 21:20:46 ERROR log4j.logs - This is an error

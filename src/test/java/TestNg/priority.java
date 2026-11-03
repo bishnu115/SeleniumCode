@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class priority 
 {
-	@Test(priority=1)
+	@Test(priority=-1)
 	public static void g()
 	{
 		 System.out.println("1");
@@ -20,7 +20,7 @@ public class priority
 	{
 		 System.out.println(" 4");
 	}
-	@Test(priority=0)
+	@Test
 	public void l()
 	{
 		 System.out.println("2");

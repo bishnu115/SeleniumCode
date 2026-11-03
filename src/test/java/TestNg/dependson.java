@@ -11,7 +11,7 @@ public class dependson
 	@Test
 	public void a()
 	{
-		//assert.fail();//deliberately fail
+
 		System.out.println("b");
 	}
 	@Test(dependsOnMethods = "a")
